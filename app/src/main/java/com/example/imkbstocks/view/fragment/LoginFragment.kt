@@ -37,7 +37,7 @@ class LoginFragment : Fragment() {
             handshakeStatus?.let{
                 binding.btnLogin.visibility = it.btnLoginVisibility
                 binding.pbHandshake.visibility = it.pbHandshakeVisibility
-                if (handshakeStatus == HandshakeStatus.FAILURE) showErrorMessage(context)
+                if (handshakeStatus == HandshakeStatus.FAILURE) showErrorMessage(requireContext())
             }
         })
     }

@@ -1,6 +1,7 @@
 package com.example.imkbstocks.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.imkbstocks.AUTH
@@ -25,6 +26,7 @@ class StockDetailViewModel(application: Application) : AndroidViewModel(applicat
     val detailResponseStatus = MutableLiveData<DetailResponseStatus>()
 
     fun getDetailData(stockId: Int?) {
+        detailResponseStatus.value = DetailResponseStatus.PREPARING
         val encryptedId = encrypt(stockId.toString())
         val detailApi= ApiClient.client?.create(DetailApiInterface::class.java)
         detailApi?.getDetail(DetailRequestModel(encryptedId), handshakeMap[AUTH])
@@ -32,9 +34,12 @@ class StockDetailViewModel(application: Application) : AndroidViewModel(applicat
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribeWith(object : DisposableSingleObserver<DetailModel>(){
                 override fun onSuccess(t: DetailModel) {
+                    detailResponseStatus.value = DetailResponseStatus.READY
                     detail.value = t
                 }
                 override fun onError(e: Throwable) {
+                    detailResponseStatus.value = DetailResponseStatus.FAILURE
+                    Log.e("DetailRequestError" , e.toString())
                 }
             })?.let {
                 disposable.add(it)

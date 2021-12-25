@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
@@ -19,8 +20,12 @@ import com.example.imkbstocks.R
 import com.example.imkbstocks.StockListStatus
 import com.example.imkbstocks.adapter.StocksAdapter
 import com.example.imkbstocks.databinding.FragmentStocksBinding
+import com.example.imkbstocks.model.ListModel
+import com.example.imkbstocks.util.decrypt
+import com.example.imkbstocks.util.getFilteredListBySymbol
 import com.example.imkbstocks.util.showErrorMessage
 import com.example.imkbstocks.viewmodel.StocksViewModel
+import java.util.*
 
 class StocksFragment : Fragment() {
     private lateinit var binding: FragmentStocksBinding
@@ -46,7 +51,7 @@ class StocksFragment : Fragment() {
         val toggle = ActionBarDrawerToggle(requireActivity(), binding.filterDrawer, binding.toolbarStocks, 0,0)
         binding.filterDrawer.addDrawerListener(toggle)
         toggle.syncState()
-        binding.rvStockList.layoutManager = LinearLayoutManager(context)
+        binding.rvStockList.layoutManager = LinearLayoutManager(requireContext())
         binding.rvStockList.adapter = stocksAdapter
     }
 
@@ -54,7 +59,7 @@ class StocksFragment : Fragment() {
         viewModel.stockListStatus.observe(viewLifecycleOwner, { stockListStatus ->
             binding.pbStockList.visibility = stockListStatus.pbStockListVisibility
             binding.rvStockList.visibility = stockListStatus.rvStockListVisibility
-            if (stockListStatus == StockListStatus.FAILURE) showErrorMessage(context)
+            if (stockListStatus == StockListStatus.FAILURE) showErrorMessage(requireContext())
         })
         viewModel.stockList.observe(viewLifecycleOwner, { stockList ->
             stocksAdapter.updateStockList(stockList)
@@ -92,6 +97,18 @@ class StocksFragment : Fragment() {
             override fun onDrawerOpened(drawerView: View) {}
             override fun onDrawerClosed(drawerView: View) {}
             override fun onDrawerStateChanged(newState: Int) {}
+        })
+
+        binding.searchStocks.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(query: String?) = true
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                viewModel.stockList.value?.let {
+                    stocksAdapter.updateStockList(it.getFilteredListBySymbol(newText))
+                }
+                return true
+            }
+
         })
     }
 

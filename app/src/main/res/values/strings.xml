@@ -1,8 +1,31 @@
 <resources>
-    <string name="app_name">IMKBStocks</string>
+    <string name="app_name">IMKB Stocks and Indices</string>
     <string name="company_name">VERIPARK</string>
     <string name="stocks_and_indices">IMKB Stocks/Indices</string>
     <string name="stocks_and_indices_2">IMKB Stocks and Indices</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="base">Base: \u0020</string>
+    <string name="ceiling">Ceiling: \u0020</string>
+    <string name="amount">Amount: \u0020</string>
+    <string name="daily_high">Daily High: \u0020</string>
+    <string name="daily_low">Daily Low: \u0020</string>
+    <string name="price">Price: \u0020</string>
+    <string name="difference">Difference: \u0020</string>
+    <string name="volume">Volume: \u0020</string>
+    <string name="purchase">Purchase: \u0020</string>
+    <string name="change">Change: \u0020</string>
+    <string name="symbol">Symbol: \u0020</string>
+    <string name="sale">Sale: \u0020</string>
+    <string name="price_header">Price</string>
+    <string name="difference_header">Difference</string>
+    <string name="volume_header">Volume</string>
+    <string name="purchase_header">Purchase</string>
+    <string name="change_header">Change</string>
+    <string name="symbol_header">Symbol</string>
+    <string name="sale_header">Sale</string>
+    <string name="stocks_and_indices_title">Sale</string>
+    <string name="ascendants_title">Ascendants</string>
+    <string name="fallen_ones_title">Fallen Ones</string>
+    <string name="vol_30_title">By Volume - 30</string>
+    <string name="vol_50_title">By Volume - 50</string>
+    <string name="vol_100_title">By Volume - 100</string>
 </resources>

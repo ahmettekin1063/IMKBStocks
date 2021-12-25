@@ -1,6 +1,7 @@
 package com.example.imkbstocks.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.imkbstocks.*
@@ -39,6 +40,7 @@ class StocksViewModel(application: Application) : AndroidViewModel(application) 
 
                 override fun onError(e: Throwable) {
                     stockListStatus.value = StockListStatus.FAILURE
+                    Log.e("StockListRequest Error" , e.toString())
                 }
 
             })?.let {

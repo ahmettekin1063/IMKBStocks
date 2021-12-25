@@ -21,7 +21,6 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.utils.Utils
 
-
 fun LineChart.renderData(data: List<GraphicData?>?) {
 
     val llXAxis = LimitLine(10f, "Index 10")

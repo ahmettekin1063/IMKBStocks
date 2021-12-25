@@ -7,10 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import com.example.imkbstocks.DetailResponseStatus
 import com.example.imkbstocks.R
 import com.example.imkbstocks.databinding.FragmentStockDetailBinding
 import com.example.imkbstocks.util.MyMarkerView
 import com.example.imkbstocks.util.renderData
+import com.example.imkbstocks.util.showErrorMessage
 import com.example.imkbstocks.viewmodel.StockDetailViewModel
 
 class StockDetailFragment : Fragment() {
@@ -41,7 +43,9 @@ class StockDetailFragment : Fragment() {
 
     private fun observeDetailData() {
         viewModel.detailResponseStatus.observe(viewLifecycleOwner , { detailResponseStatus ->
-
+            binding.pbDetailChart.visibility = detailResponseStatus.pbDetailChartVisibility
+            binding.stockDetailChart.visibility = detailResponseStatus.detailChartVisibility
+            if (detailResponseStatus == DetailResponseStatus.FAILURE) showErrorMessage(requireContext())
         })
 
         viewModel.detail.observe(viewLifecycleOwner , { detailData ->

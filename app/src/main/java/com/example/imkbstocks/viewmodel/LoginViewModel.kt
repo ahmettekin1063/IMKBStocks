@@ -1,6 +1,7 @@
 package com.example.imkbstocks.viewmodel
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import com.example.imkbstocks.*
@@ -37,6 +38,7 @@ class LoginViewModel(application: Application) : AndroidViewModel(application){
             }
             override fun onError(e: Throwable) {
                 handshakeStatus.value = HandshakeStatus.FAILURE
+                Log.e("Handshake Error" , e.toString())
             }
         })?.let {
             disposable.add(it)

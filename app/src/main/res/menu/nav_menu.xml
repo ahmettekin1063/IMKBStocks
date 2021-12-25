@@ -3,22 +3,21 @@
 
     <item
         android:id="@+id/item_stock"
-        android:title="Hisse ve Endeksler" />
+        android:title="@string/stocks_and_indices" />
     <item
         android:id="@+id/item_up"
-        android:title="Yükselenler" />
+        android:title="@string/ascendants_title" />
     <item
         android:id="@+id/item_down"
-        android:title="Düşenler" />
+        android:title="@string/fallen_ones_title" />
     <item
         android:id="@+id/item_vlm_30"
-        android:title="Hacme Göre - 30" />
+        android:title="@string/vol_30_title" />
     <item
         android:id="@+id/item_vlm_50"
-        android:title="Hacme Göre - 50" />
+        android:title="@string/vol_50_title" />
     <item
         android:id="@+id/item_vlm_100"
-        android:title="Hacme Göre - 100" />
-
+        android:title="@string/vol_100_title" />
 
 </menu>

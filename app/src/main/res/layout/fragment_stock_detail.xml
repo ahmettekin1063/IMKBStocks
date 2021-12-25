@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Taban"
+            android:text="@string/base"
             app:layout_constraintEnd_toStartOf="@+id/tvStockLowest"
             app:layout_constraintTop_toBottomOf="@+id/tvHighestTitle" />
 
@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Tavan"
+            android:text="@string/ceiling"
             app:layout_constraintEnd_toStartOf="@+id/tvHighest"
             app:layout_constraintTop_toBottomOf="@+id/tvStockAmountTitle" />
 
@@ -39,7 +39,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
-            android:text="Adet"
+            android:text="@string/amount"
             app:layout_constraintEnd_toStartOf="@+id/tvStockAmount"
             app:layout_constraintTop_toBottomOf="@+id/tvStockDailyHighTitle" />
 
@@ -48,7 +48,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
-            android:text="Günlük Yüksek"
+            android:text="@string/daily_high"
             app:layout_constraintEnd_toStartOf="@+id/tvStockDailyHigh"
             app:layout_constraintTop_toBottomOf="@+id/tvStockDailyLowTitle" />
 
@@ -57,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="Günlük Düşük"
+            android:text="@string/daily_low"
             app:layout_constraintEnd_toStartOf="@+id/tvStockDailyLow"
             app:layout_constraintTop_toBottomOf="@+id/toolbarDetail" />
 
@@ -66,7 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="11dp"
-            android:text="Fiyat"
+            android:text="@string/price"
             app:layout_constraintStart_toStartOf="@+id/tvStockSymbolTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvStockSymbolTitle" />
 
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
-            android:text="Fark"
+            android:text="@string/difference"
             app:layout_constraintStart_toStartOf="@+id/tvStockPriceTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvStockPriceTitle" />
 
@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Hacim"
+            android:text="@string/volume"
             app:layout_constraintStart_toStartOf="@+id/tvStockDifferenceTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvStockDifferenceTitle" />
 
@@ -93,7 +93,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Alış"
+            android:text="@string/purchase"
             app:layout_constraintStart_toStartOf="@+id/tvStockVolumeTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvStockVolumeTitle" />
 
@@ -103,7 +103,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="28dp"
-            android:text="Sembol"
+            android:text="@string/symbol"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbarDetail" />
 
@@ -112,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Satış"
+            android:text="@string/sale"
             app:layout_constraintStart_toStartOf="@+id/tvStockPurchaseTitle"
             app:layout_constraintTop_toBottomOf="@+id/tvStockPurchaseTitle" />
 
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Değişim:"
+            android:text="@string/change"
             app:layout_constraintEnd_toStartOf="@+id/imgChange"
             app:layout_constraintTop_toBottomOf="@+id/tvStockLowestTitle" />
 
@@ -145,7 +145,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:title="IMKB Hİsse ve Endeksler" />
+            app:title="@string/stocks_and_indices_2" />
+
+        <ProgressBar
+            android:id="@+id/pbDetailChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockSaleTitle"  />
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/stockDetailChart"

@@ -32,7 +32,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:title="IMKB Hisse ve Endeksler"
+                app:title="@string/stocks_and_indices_2"
                 app:titleTextColor="@color/white" />
 
             <LinearLayout
@@ -55,7 +55,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Sembol" />
+                    android:text="@string/symbol_header" />
 
                 <TextView
                     android:layout_width="38dp"
@@ -63,7 +63,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Fiyat" />
+                    android:text="@string/price_header" />
 
                 <TextView
                     android:layout_width="38dp"
@@ -71,7 +71,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Fark" />
+                    android:text="@string/difference_header" />
 
                 <TextView
                     android:layout_width="55dp"
@@ -79,7 +79,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Hacim" />
+                    android:text="@string/volume_header" />
 
                 <TextView
                     android:layout_width="38dp"
@@ -87,7 +87,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Alış" />
+                    android:text="@string/purchase_header" />
 
                 <TextView
                     android:layout_width="38dp"
@@ -95,7 +95,7 @@
                     android:layout_marginLeft="15dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
-                    android:text="Satış" />
+                    android:text="@string/sale_header" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
@@ -110,7 +110,7 @@
                     <TextView
                         android:layout_width="55dp"
                         android:layout_height="wrap_content"
-                        android:text="Değişim"
+                        android:text="@string/change_header"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
