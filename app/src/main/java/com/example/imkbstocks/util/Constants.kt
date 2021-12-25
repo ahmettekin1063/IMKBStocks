@@ -18,7 +18,7 @@ enum class StockListStatus(val pbStockListVisibility: Int, val rvStockListVisibi
     FAILURE(GONE, GONE)
 }
 
-enum class DetailResponseStatus(val pbStockListVisibility: Int, val rvStockListVisibility: Int) {
+enum class DetailResponseStatus(val pbDetailChartVisibility: Int, val detailChartVisibility: Int) {
     PREPARING(VISIBLE, GONE),
     READY(GONE, VISIBLE),
     FAILURE(GONE, GONE)

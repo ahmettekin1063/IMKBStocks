@@ -9,9 +9,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.imkbstocks.R
 import com.example.imkbstocks.databinding.FragmentStockDetailBinding
-import com.example.imkbstocks.databinding.FragmentStocksBinding
+import com.example.imkbstocks.util.MyMarkerView
+import com.example.imkbstocks.util.renderData
 import com.example.imkbstocks.viewmodel.StockDetailViewModel
-import com.example.imkbstocks.viewmodel.StocksViewModel
 
 class StockDetailFragment : Fragment() {
     private lateinit var binding: FragmentStockDetailBinding
@@ -26,11 +26,29 @@ class StockDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(StockDetailViewModel::class.java)
         val stockId = arguments?.getInt("stockId")
-        viewModel.getDetail(stockId)
+        configureChart()
+        viewModel.getDetailData(stockId)
         observeDetailData()
     }
 
-    private fun observeDetailData() {
-
+    private fun configureChart() {
+        binding.stockDetailChart.setTouchEnabled(true)
+        binding.stockDetailChart.setPinchZoom(false)
+        val mv = MyMarkerView(requireContext(), R.layout.custom_marker_view)
+        mv.chartView = binding.stockDetailChart
+        binding.stockDetailChart.marker = mv
     }
+
+    private fun observeDetailData() {
+        viewModel.detailResponseStatus.observe(viewLifecycleOwner , { detailResponseStatus ->
+
+        })
+
+        viewModel.detail.observe(viewLifecycleOwner , { detailData ->
+            binding.detail = detailData
+            binding.stockDetailChart.renderData(detailData.graphicData)
+        })
+    }
+
+
 }

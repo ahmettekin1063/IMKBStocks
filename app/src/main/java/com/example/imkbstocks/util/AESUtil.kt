@@ -25,10 +25,13 @@ internal fun encrypt(input: String): String {
 internal fun decrypt(cipherText: String?): String {
     val cipher = Cipher.getInstance(ALGORITHM)
     cipher.init(Cipher.DECRYPT_MODE, strToSecretKey(handshakeMap[AES_KEY]), strToIV(handshakeMap[AES_IV]))
-    val plainText = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        cipher.doFinal(Base64.getDecoder().decode(cipherText))
-    } else {
-        cipher.doFinal(android.util.Base64.decode(cipherText, android.util.Base64.DEFAULT))
+    var plainText = byteArrayOf()
+    cipherText?.let {
+        plainText = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            cipher.doFinal(Base64.getDecoder().decode(cipherText))
+        } else {
+            cipher.doFinal(android.util.Base64.decode(cipherText, android.util.Base64.DEFAULT))
+        }
     }
     return String(plainText)
 }

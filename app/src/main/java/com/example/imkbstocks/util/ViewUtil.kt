@@ -19,9 +19,9 @@ fun getStockStatusImage(stock : ListModel.Stock) : Drawable? {
     return mResources?.getDrawable(R.drawable.none)
 }
 
-fun getDetailStatusImage(detail : DetailModel) : Drawable? {
-    detail.isUp?.let { if (it) return mResources?.getDrawable(R.drawable.up_arrow)}
-    detail.isDown?.let { if (it) return mResources?.getDrawable(R.drawable.down_arrow)}
+fun getDetailStatusImage(detail : DetailModel?) : Drawable? {
+    detail?.isUp?.let { if (it) return mResources?.getDrawable(R.drawable.up_arrow)}
+    detail?.isDown?.let { if (it) return mResources?.getDrawable(R.drawable.down_arrow)}
     return mResources?.getDrawable(R.drawable.none)
 }
 
