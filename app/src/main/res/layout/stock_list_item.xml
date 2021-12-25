@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.imkbstocks.util.AESUtilKt" />
+
+        <import type="com.example.imkbstocks.util.ViewUtilKt" />
+
+        <import type="com.example.imkbstocks.util.StringUtilKt" />
+
+        <variable
+            name="position"
+            type="Integer" />
+
+        <variable
+            name="stock"
+            type="com.example.imkbstocks.model.ListModel.Stock" />
+
+        <variable
+            name="listener"
+            type="com.example.imkbstocks.adapter.StocksAdapter.OnStockClickListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:background="@{ViewUtilKt.getBackgroundColor(position)}"
+        android:onClick="@{(view) -> listener.onStockClicked(view, stock.id)}"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvStockSymbol"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@{AESUtilKt.decrypt(stock.symbol)}" />
+
+        <TextView
+            android:id="@+id/tvStockPrice"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@{StringUtilKt.format(stock.price)}" />
+
+        <TextView
+            android:id="@+id/tvStockDiff"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@{StringUtilKt.format(Math.abs(stock.difference))}" />
+
+        <TextView
+            android:id="@+id/tvStockVolume"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@{StringUtilKt.format(stock.volume)}" />
+
+        <TextView
+            android:id="@+id/tvStockPurchase"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@{StringUtilKt.format(stock.bid)}" />
+
+        <TextView
+            android:id="@+id/tvStockSale"
+            android:layout_width="38dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="@{StringUtilKt.format(stock.offer)}" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="3dp"
+            android:layout_marginBottom="5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/imgDiff"
+                android:layout_width="55dp"
+                android:layout_height="wrap_content"
+                android:src="@{ViewUtilKt.getStockStatusImage(stock)}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+</layout>

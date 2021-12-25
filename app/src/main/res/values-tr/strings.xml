@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">IMKBStocks</string>
+    <string name="company_name">VERİPARK</string>
+    <string name="stocks_and_indices">IMKB Hisse Senetleri/Endeksler</string>
+    <string name="stocks_and_indices_2">IMKB Hisse ve Endeksler</string>
+</resources>

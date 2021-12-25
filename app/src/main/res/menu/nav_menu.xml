@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_stock"
+        android:title="Hisse ve Endeksler" />
+    <item
+        android:id="@+id/item_up"
+        android:title="Yükselenler" />
+    <item
+        android:id="@+id/item_down"
+        android:title="Düşenler" />
+    <item
+        android:id="@+id/item_vlm_30"
+        android:title="Hacme Göre - 30" />
+    <item
+        android:id="@+id/item_vlm_50"
+        android:title="Hacme Göre - 50" />
+    <item
+        android:id="@+id/item_vlm_100"
+        android:title="Hacme Göre - 100" />
+
+
+</menu>

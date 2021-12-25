@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/my_nav_graph"
     app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.imkbstocks.view.LoginFragment"
-        android:label="LoginFragment" />
+        android:name="com.example.imkbstocks.view.fragment.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_stocksFragment"
+            app:destination="@id/stocksFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stocksFragment"
+        android:name="com.example.imkbstocks.view.fragment.StocksFragment"
+        android:label="StocksFragment" >
+        <action
+            android:id="@+id/action_stocksFragment_to_stockDetailFragment"
+            app:destination="@id/stockDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/stockDetailFragment"
+        android:name="com.example.imkbstocks.view.fragment.StockDetailFragment"
+        android:label="fragment_stock_detail"
+        tools:layout="@layout/fragment_stock_detail" >
+        <argument
+            android:name="stockId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

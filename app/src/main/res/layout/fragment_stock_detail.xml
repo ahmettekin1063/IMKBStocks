@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="detail"
+            type="com.example.imkbstocks.model.detailmodelpackage.DetailModel" />
+        <import type="com.example.imkbstocks.util.StringUtilKt" />
+        <import type="com.example.imkbstocks.util.AESUtilKt" />
+        <import type="com.example.imkbstocks.util.ViewUtilKt" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tvStockLowestTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Taban"
+            app:layout_constraintEnd_toStartOf="@+id/tvStockLowest"
+            app:layout_constraintTop_toBottomOf="@+id/tvHighestTitle" />
+
+        <TextView
+            android:id="@+id/tvHighestTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Tavan"
+            app:layout_constraintEnd_toStartOf="@+id/tvHighest"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockAmountTitle" />
+
+        <TextView
+            android:id="@+id/tvStockAmountTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Adet"
+            app:layout_constraintEnd_toStartOf="@+id/tvStockAmount"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockDailyHighTitle" />
+
+        <TextView
+            android:id="@+id/tvStockDailyHighTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="Günlük Yüksek"
+            app:layout_constraintEnd_toStartOf="@+id/tvStockDailyHigh"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockDailyLowTitle" />
+
+        <TextView
+            android:id="@+id/tvStockDailyLowTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Günlük Düşük"
+            app:layout_constraintEnd_toStartOf="@+id/tvStockDailyLow"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDetail" />
+
+        <TextView
+            android:id="@+id/tvStockPriceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:text="Fiyat"
+            app:layout_constraintStart_toStartOf="@+id/tvStockSymbolTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockSymbolTitle" />
+
+        <TextView
+            android:id="@+id/tvStockDifferenceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="Fark"
+            app:layout_constraintStart_toStartOf="@+id/tvStockPriceTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockPriceTitle" />
+
+        <TextView
+            android:id="@+id/tvStockVolumeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Hacim"
+            app:layout_constraintStart_toStartOf="@+id/tvStockDifferenceTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockDifferenceTitle" />
+
+        <TextView
+            android:id="@+id/tvStockPurchaseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Alış"
+            app:layout_constraintStart_toStartOf="@+id/tvStockVolumeTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockVolumeTitle" />
+
+        <TextView
+            android:id="@+id/tvStockSymbolTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="28dp"
+            android:text="Sembol"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbarDetail" />
+
+        <TextView
+            android:id="@+id/tvStockSaleTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Satış"
+            app:layout_constraintStart_toStartOf="@+id/tvStockPurchaseTitle"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockPurchaseTitle" />
+
+        <TextView
+            android:id="@+id/tvChangeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Değişim:"
+            app:layout_constraintEnd_toStartOf="@+id/imgChange"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockLowestTitle" />
+
+        <ImageView
+            android:id="@+id/imgChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/tvChangeTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvChangeTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@{ViewUtilKt.getDetailStatusImage(detail)}"
+            android:layout_marginEnd="37dp"
+            app:srcCompat="@drawable/none" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarDetail"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="@style/HeaderBar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="IMKB Hİsse ve Endeksler" />
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/stockDetailChart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvStockSaleTitle" />
+
+        <TextView
+            android:id="@+id/tvStockSymbol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{AESUtilKt.decrypt(detail.symbol)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockSymbolTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvStockSymbolTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvStockSymbolTitle" />
+
+        <TextView
+            android:id="@+id/tvStockPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.price)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockPriceTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvStockPriceTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvStockPriceTitle"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvStockDifference"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.difference)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockDifferenceTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvStockDifferenceTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvStockDifferenceTitle" />
+
+        <TextView
+            android:id="@+id/tvStockVolume"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.volume)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockVolumeTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvStockVolumeTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvStockVolumeTitle" />
+
+        <TextView
+            android:id="@+id/tvStockPurchase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.bid)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockPurchaseTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvStockPurchaseTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvStockPurchaseTitle" />
+
+        <TextView
+            android:id="@+id/tvStockSale"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.offer)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockSaleTitle"
+            app:layout_constraintStart_toEndOf="@+id/tvStockSaleTitle"
+            app:layout_constraintTop_toTopOf="@+id/tvStockSaleTitle" />
+
+        <TextView
+            android:id="@+id/tvStockDailyLow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="37dp"
+            android:text="@{StringUtilKt.format(detail.lowest)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockDailyLowTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvStockDailyLowTitle" />
+
+        <TextView
+            android:id="@+id/tvStockDailyHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.highest)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockDailyHighTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvStockDailyLow"
+            app:layout_constraintTop_toTopOf="@+id/tvStockDailyHighTitle" />
+
+        <TextView
+            android:id="@+id/tvStockAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.count)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockAmountTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvStockDailyHigh"
+            app:layout_constraintTop_toTopOf="@+id/tvStockAmountTitle" />
+
+        <TextView
+            android:id="@+id/tvHighest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.highest)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHighestTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvStockAmount"
+            app:layout_constraintTop_toTopOf="@+id/tvHighestTitle" />
+
+        <TextView
+            android:id="@+id/tvStockLowest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{StringUtilKt.format(detail.lowest)}"
+            app:layout_constraintBottom_toBottomOf="@+id/tvStockLowestTitle"
+            app:layout_constraintEnd_toEndOf="@+id/tvHighest"
+            app:layout_constraintTop_toTopOf="@+id/tvStockLowestTitle" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
