@@ -28,4 +28,6 @@
     <string name="vol_30_title">Hacme Göre - 30</string>
     <string name="vol_50_title">Hacme Göre - 50</string>
     <string name="vol_100_title">Hacme Göre - 100</string>
+    <string name="error">Bir hata ile karşılaşıldı..</string>
+    <string name="connection_error">Lütfen İnternet Bağlantınızı Kontrol Ediniz..</string>
 </resources>

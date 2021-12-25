@@ -9,8 +9,8 @@ import com.example.imkbstocks.mResources
 import com.example.imkbstocks.model.ListModel
 import com.example.imkbstocks.model.detailmodelpackage.DetailModel
 
-fun showErrorMessage(context: Context?) {
-    Toast.makeText(context, "Hata", Toast.LENGTH_LONG).show()
+fun showErrorMessage(context: Context?, message: String) {
+    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
 }
 
 fun getStockStatusImage(stock : ListModel.Stock) : Drawable? {

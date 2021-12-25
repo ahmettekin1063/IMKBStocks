@@ -24,6 +24,10 @@ enum class DetailResponseStatus(val pbDetailChartVisibility: Int, val detailChar
     FAILURE(GONE, GONE)
 }
 
+enum class ConnectivityStatus {
+    CONNECTED, DISCONNECTED
+}
+
 enum class Periods(val period: String) {
     ALL("all"),
     INCREASING("increasing"),

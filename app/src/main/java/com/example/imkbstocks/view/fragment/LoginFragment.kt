@@ -12,6 +12,7 @@ import androidx.navigation.Navigation
 import com.example.imkbstocks.HandshakeStatus
 import com.example.imkbstocks.R
 import com.example.imkbstocks.databinding.FragmentLoginBinding
+import com.example.imkbstocks.util.NetworkConnectionLiveData
 import com.example.imkbstocks.util.showErrorMessage
 import com.example.imkbstocks.viewmodel.LoginViewModel
 
@@ -30,6 +31,14 @@ class LoginFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
         viewModel.handshake()
         observeHandshakeStatus()
+        observeConnection()
+    }
+
+    private fun observeConnection() {
+        NetworkConnectionLiveData(requireContext()).observe(viewLifecycleOwner, { isConnected ->
+            if (isConnected) viewModel.handshake()
+            else showErrorMessage(requireContext(), getString(R.string.connection_error))
+        })
     }
 
     private fun observeHandshakeStatus(){
@@ -37,7 +46,7 @@ class LoginFragment : Fragment() {
             handshakeStatus?.let{
                 binding.btnLogin.visibility = it.btnLoginVisibility
                 binding.pbHandshake.visibility = it.pbHandshakeVisibility
-                if (handshakeStatus == HandshakeStatus.FAILURE) showErrorMessage(requireContext())
+                if (handshakeStatus == HandshakeStatus.FAILURE) showErrorMessage(requireContext(), getString(R.string.error))
             }
         })
     }

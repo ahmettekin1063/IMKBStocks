@@ -28,4 +28,7 @@
     <string name="vol_30_title">By Volume - 30</string>
     <string name="vol_50_title">By Volume - 50</string>
     <string name="vol_100_title">By Volume - 100</string>
+    <string name="error">An error was encountered!</string>
+    <string name="connection_error">Please Check Your Internet Connection..
+</string>
 </resources>

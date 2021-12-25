@@ -21,6 +21,7 @@ import com.example.imkbstocks.StockListStatus
 import com.example.imkbstocks.adapter.StocksAdapter
 import com.example.imkbstocks.databinding.FragmentStocksBinding
 import com.example.imkbstocks.model.ListModel
+import com.example.imkbstocks.util.NetworkConnectionLiveData
 import com.example.imkbstocks.util.decrypt
 import com.example.imkbstocks.util.getFilteredListBySymbol
 import com.example.imkbstocks.util.showErrorMessage
@@ -45,6 +46,7 @@ class StocksFragment : Fragment() {
         configListeners()
         viewModel.getStockList(Periods.ALL.period)
         observeLiveData()
+        observeConnection()
     }
 
     private fun configureUI() {
@@ -59,7 +61,7 @@ class StocksFragment : Fragment() {
         viewModel.stockListStatus.observe(viewLifecycleOwner, { stockListStatus ->
             binding.pbStockList.visibility = stockListStatus.pbStockListVisibility
             binding.rvStockList.visibility = stockListStatus.rvStockListVisibility
-            if (stockListStatus == StockListStatus.FAILURE) showErrorMessage(requireContext())
+            if (stockListStatus == StockListStatus.FAILURE) showErrorMessage(requireContext(), getString(R.string.error))
         })
         viewModel.stockList.observe(viewLifecycleOwner, { stockList ->
             stocksAdapter.updateStockList(stockList)
@@ -115,6 +117,13 @@ class StocksFragment : Fragment() {
     private fun goToStockDetailFragment(view: View, stockId: Int) {
         val action = StocksFragmentDirections.actionStocksFragmentToStockDetailFragment(stockId)
         Navigation.findNavController(view).navigate(action)
+    }
+
+    private fun observeConnection() {
+        NetworkConnectionLiveData(requireContext()).observe(viewLifecycleOwner, { isConnected ->
+            if (isConnected) viewModel.getStockList(Periods.ALL.period)
+            else showErrorMessage(requireContext(), getString(R.string.connection_error))
+        })
     }
 
     override fun onAttach(context: Context) {
